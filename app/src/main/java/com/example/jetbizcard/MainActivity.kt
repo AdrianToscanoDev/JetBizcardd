@@ -31,9 +31,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.jetbizcard.ui.theme.JetBizcardTheme
 
@@ -55,7 +57,7 @@ fun CreateBizcard() {
     // main background
     Surface(modifier = Modifier
         .fillMaxWidth()
-        .fillMaxHeight(),
+        .fillMaxHeight()
     ) {
 
         // card background
@@ -64,10 +66,10 @@ fun CreateBizcard() {
             .height(390.dp)
             .padding(12.dp),
             shape = RoundedCornerShape(corner = CornerSize(40.dp)),
-            elevation = CardDefaults.cardElevation(10.dp),
+            elevation = CardDefaults.cardElevation(10.dp)
         ) {
 
-            // column for the content on top of the card
+            // column for the main content
             Column (
                 modifier = Modifier
                     .fillMaxSize()
@@ -78,7 +80,9 @@ fun CreateBizcard() {
 
                 // profile icon
                 CreateImageProfile()
-                HorizontalDivider()
+
+                // divider under the profile picture
+                HorizontalDivider(modifier = Modifier)
             }
         }
     }
@@ -94,17 +98,18 @@ private fun CreateImageProfile(modifier: Modifier = Modifier) {
             .padding(13.dp)
             .size(160.dp),
         shape = CircleShape,
-        border = BorderStroke(1.dp, Color.Red),
-        shadowElevation = 4.dp,
+        border = BorderStroke(1.dp, Color.LightGray),
+        shadowElevation = 8.dp,
         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f)
     ) {
 
         // image used inside the circle
         Image(
-            modifier = Modifier,
+            modifier = Modifier
+                .graphicsLayer(scaleX = 1.5f, scaleY = 1.5f),
             painter = painterResource(id = R.drawable.profile_picture),
             contentDescription = "profile image",
-            contentScale = ContentScale.Fit
+            contentScale = ContentScale.Crop
         )
     }
 }
