@@ -79,8 +79,6 @@ fun CreateBizcard() {
                 // profile icon
                 CreateImageProfile()
                 HorizontalDivider()
-
-                Text(text = "this is a test")
             }
         }
     }
