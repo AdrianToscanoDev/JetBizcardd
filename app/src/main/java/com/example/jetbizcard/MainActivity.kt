@@ -6,8 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -20,9 +18,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -35,8 +33,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.jetbizcard.ui.theme.JetBizcardTheme
 
 class MainActivity : ComponentActivity() {
@@ -82,9 +80,65 @@ fun CreateBizcard() {
                 CreateImageProfile()
 
                 // divider under the profile picture
-                HorizontalDivider(modifier = Modifier)
+                HorizontalDivider(modifier = Modifier.padding(top = 10.dp))
+
+                // profile text info
+                CreateUserDetails()
+
+                // portfolio button
+                CreatePortfolioButton()
             }
         }
+    }
+}
+
+@Composable
+private fun CreatePortfolioButton() {
+    Button(
+        modifier = Modifier
+            .padding(1.dp),
+        onClick = {
+
+        }) {
+        Text(
+            modifier = Modifier,
+            text = "Portfolio",
+            fontSize = 17.sp
+        )
+    }
+}
+
+@Composable
+private fun CreateUserDetails(modifier: Modifier = Modifier) {
+    Column(
+        modifier = Modifier
+            .padding(3.dp),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        // user name
+        Text(
+            modifier = Modifier
+                .padding(top = 10.dp),
+            fontSize = 37.sp,
+            color = Color.Blue,
+            text = "Adrian Toscano",
+        )
+
+        // user job title
+        Text(
+            modifier = Modifier,
+            fontSize = 17.sp,
+            text = "Android Developer"
+        )
+
+        // social media handle
+        Text(
+            modifier = Modifier,
+            fontSize = 17.sp,
+            text = "@AyDrean__"
+        )
     }
 }
 
