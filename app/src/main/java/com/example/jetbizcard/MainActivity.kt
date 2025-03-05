@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -21,6 +22,8 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -72,25 +75,39 @@ fun CreateBizcard() {
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // profile circle
-                Surface(modifier = Modifier
-                    .size(160.dp),
-                    shape = CircleShape,
-                    border = BorderStroke(1.dp, Color.Red),
-                    shadowElevation = 4.dp,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f)
-                ) {
-                    Image(painter = painterResource(id = R.drawable.profile_picture),
-                        contentDescription = "profile image",
-                        modifier = Modifier
-                            .size(135.dp),
-                        contentScale = ContentScale.Crop
-                    )
-                }
+
+                // profile icon
+                CreateImageProfile()
+                HorizontalDivider()
 
                 Text(text = "this is a test")
             }
         }
+    }
+}
+
+// UI for the profile icon
+@Composable
+private fun CreateImageProfile(modifier: Modifier = Modifier) {
+
+    // circle shape
+    Surface(
+        modifier = Modifier
+            .padding(13.dp)
+            .size(160.dp),
+        shape = CircleShape,
+        border = BorderStroke(1.dp, Color.Red),
+        shadowElevation = 4.dp,
+        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f)
+    ) {
+
+        // image used inside the circle
+        Image(
+            modifier = Modifier,
+            painter = painterResource(id = R.drawable.profile_picture),
+            contentDescription = "profile image",
+            contentScale = ContentScale.Fit
+        )
     }
 }
 
